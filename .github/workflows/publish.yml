@@ -19,7 +19,8 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
       - name: Generate dependent package version
         run: |
           echo "packer_version=\"$(curl https://api.github.com/repos/hashicorp/packer/releases/latest -s | jq .name -r | sed s/v//)\"" >> dependencies.auto.pkrvars.hcl
@@ -29,14 +30,16 @@ jobs:
           echo "consul_version=\"$(curl https://api.github.com/repos/hashicorp/consul/releases/latest -s | jq .name -r | sed s/v//)\"" >> dependencies.auto.pkrvars.hcl
           echo "vault_version=\"$(curl https://api.github.com/repos/hashicorp/vault/releases/latest -s | jq .name -r | sed s/v//)\"" >> dependencies.auto.pkrvars.hcl
           echo "tailscale_version=\"$(curl https://api.github.com/repos/tailscale/tailscale/releases/latest -s | jq .tag_name -r | sed s/v//)\"" >> dependencies.auto.pkrvars.hcl
+
       - name: Initializes Packer
         run: packer init .
+
       - name: Validate packer configurations
         run: packer validate -syntax-only .
+
       - name: Run packer build
         run: |
           packer build -color=false -on-error=abort -only 'docker.base' .
           packer build -color=false -on-error=abort -only 'docker.packer' .
           packer build -color=false -on-error=abort -only 'docker.terraform' .
           packer build -color=false -on-error=abort -only 'docker.provisioner' .
-          packer build -color=false -on-error=abort -only 'docker.python' .

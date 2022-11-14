@@ -4,49 +4,45 @@ variable "image" {
 }
 
 variable "repository" {
-  type    = string
+  type = string
 }
 
 variable "registry" {
-  type    = string
+  type = string
 }
 
 variable "username" {
-  type    = string
+  type = string
 }
 
 variable "password" {
-  type    = string
+  type = string
 }
 
 variable "packer_version" {
-  type    = string
+  type = string
 }
 
 variable "terraform_version" {
-  type    = string
+  type = string
 }
 
 variable "consul_version" {
-  type    = string
+  type = string
 }
 
 variable "nomad_version" {
-  type    = string
+  type = string
 }
 
 variable "tailscale_version" {
-  type    = string
+  type = string
 }
 
 variable "vault_version" {
-  type    = string
+  type = string
 }
 
 variable "cfssl_version" {
-  type    = string
-}
-
-variable "ct_version" {
-  type    = string
+  type = string
 }
