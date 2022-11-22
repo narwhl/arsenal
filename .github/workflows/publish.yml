@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   schedule:
     # Fetch latest packages for prebuilt CI runtime image weekly
-    - cron: "0 * * * 7"
+    - cron: "0 * * * 6"
 
 env:
   PKR_VAR_registry: ghcr.io
