@@ -8,6 +8,7 @@ on:
     - cron: "0 * * * 6"
 
 env:
+  DOCKER_BUILDKIT: 1
   PKR_VAR_registry: ghcr.io
   PKR_VAR_repository: ghcr.io/${{ github.repository }}
   PKR_VAR_username: ${{ github.actor }}
