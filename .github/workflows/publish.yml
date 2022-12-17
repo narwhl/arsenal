@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   schedule:
     # Fetch latest packages for prebuilt CI runtime image weekly
-    - cron: "0 * * * 6"
+    - cron: "0 0 * * 6"
 
 env:
   DOCKER_BUILDKIT: 1
